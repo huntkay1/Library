@@ -1,25 +1,21 @@
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
+
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-
-    this.info = function() {
-        return `${title} by ${author}, ${pages}, ${read}`;
-    }
-
 }
 
 function addBookToLibrary(ev) {
     ev.preventDefault(); //stops the form from submitting - ev is the event
-    let book = {
-        title: document.getElementById('title').value,
-        author: document.getElementById('author').value,
-        pages: document.getElementById('pages').value,
-        read: document.getElementById('read').value
-    }
+    let book = new Book(
+        document.getElementById('title').value,
+        document.getElementById('author').value,
+        document.getElementById('pages').value,
+        document.getElementById('read').checked
+    )
     myLibrary.push(book);
     document.querySelector('form').reset(); //resets the form for the next entry
     console.log(myLibrary);
