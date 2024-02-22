@@ -1,0 +1,7 @@
+#card-containter {
+    display: grid;
+}
+
+.card {
+    border: 1px solid black;
+}
