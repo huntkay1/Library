@@ -57,12 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('submit').addEventListener('click', addBookToLibrary);
 })
 
+//open and close form modal
 addBookBttn.addEventListener("click", () => {
     dialog.showModal();
 })
 
-close.closeBttn.addEventListener("click", () => {
-    dialog.close;
+closeBttn.addEventListener("click", () => {
+    dialog.close();
 })
 
 
+//container clears when modal is closed. 
+//modal stays open after a book is added
