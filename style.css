@@ -5,3 +5,9 @@
 .card {
     border: 1px solid black;
 }
+
+button.true :first-child, 
+button.false :last-child {
+  background: #000;
+  color: #fff;
+}

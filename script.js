@@ -3,6 +3,9 @@ const cardContainer = document.getElementById("card-container");
 const addBookBttn = document.getElementById("add-book");
 const dialog = document.querySelector("dialog");
 const closeBttn = document.getElementById("close");
+const statusBttn = document.getElementById("status");
+
+
 
 //Creates book object
 function Book(title, author, pages, read) {
@@ -29,48 +32,83 @@ function addBookToLibrary(ev) {
 
 //makes the card to display on UI
 function makeCard() {
-   cardContainer.innerHTML = ''; //clear the container after each addition to prevent repeats
+   cardContainer.innerHTML = ''; //clear the container after each addition to prevent repeats 
 
-   myLibrary.forEach((element, index) => {
+   myLibrary.forEach((obj, index) => {
         //make the card elements
-        card = document.createElement("div");
-        title = document.createElement("h2");
-        author = document.createElement("h3")
-        pages = document.createElement("p");
-        read = document.createElement("p");
-        removeBttn = document.createElement("button");
+        var card = document.createElement("div")
         card.classList.add("card");
+        var title = document.createElement("h2");
+        var author = document.createElement("h3");
+        var pages = document.createElement("p");
+        var read = document.createElement("p");
+        var removeBttn = document.createElement("button");
+
+        //make the read status toggle
+        var readStatus = document.createElement("button");
+        readStatus.setAttribute('id', 'bttn' + index);
+        //add class based on user's read status
+        obj.read === true ? readStatus.classList.add('true') : readStatus.classList.add('false');
+        var span1 = document.createElement("span");
+        var span2 = document.createElement("span");
+        span1.innerHTML = "read";
+        span2.innerHTML = "not read";
+        readStatus.appendChild(span1);
+        readStatus.appendChild(span2);
+
+        //add elements to card
         card.appendChild(title);
         card.appendChild(author);
         card.appendChild(pages);
         card.appendChild(read);
         card.appendChild(removeBttn);
+        card.appendChild(readStatus);
         cardContainer.appendChild(card);
 
         //add card text contents
-        title.innerHTML = element.title;
-        author.innerHTML = element.author;
-        pages.innerHTML = element.pages;
-        read.innerHTML = element.read;
+        title.innerHTML = obj.title;
+        author.innerHTML = obj.author;
+        pages.innerHTML = obj.pages;
+        read.innerHTML = obj.read;
         removeBttn.innerHTML = "remove";
 
-        removeBttn.addEventListener('click', removeCard)
+        //button events
+        removeBttn.addEventListener('click', removeCard);
+        readStatus.addEventListener('click', changeStatus);
+        
     })
 }
 
 //removes the card from UI and corresponding book object from myLibrary
 function removeCard(ev) {
-    var btn = ev.target;
-    var cardBody = btn.parentElement;
+    var bttn = ev.target;
+    var cardBody = bttn.parentElement;
     var bookTitle = cardBody.querySelector("h2").innerHTML;
     
-    myLibrary.splice(myLibrary.findIndex(v => v.title === bookTitle), 1);
+    myLibrary.splice(myLibrary.findIndex(book => book.title === bookTitle), 1);
 
     makeCard();
 }
 
+//change read status UI, class name, and corresponding key value 
+function changeStatus(ev) {
+    var bttn = ev.target.parentElement;
+    var cardBody = bttn.parentElement;
+    var bookTitle = cardBody.querySelector("h2").innerHTML;
+    var index = myLibrary.findIndex(book => book.title === bookTitle)
+    var classValue = bttn.classList.value;
+    
+    if (classValue === "true") {
+        bttn.classList.replace("true", "false");
+        myLibrary[index].read = false;
+    } else {
+        bttn.classList.replace("false", "true");
+        myLibrary[index].read = true;
+    }
+}
 
-//when content is fully loaded
+
+//when content is fully loaded, open form to add book
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('submit').addEventListener('click', addBookToLibrary);
 })
@@ -82,4 +120,9 @@ addBookBttn.addEventListener("click", () => {
 closeBttn.addEventListener("click", () => {
     dialog.close();
 })
+
+
+
+
+
 
