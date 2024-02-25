@@ -8,29 +8,33 @@
 </head>
 <body>
 
-    <button id="add-book">+ Add Book</button>
+    <div id="header">
+        <h1>The Library</h1>
+        <button id="add-book">+ Add Book</button>
+    </div>
+    
 
     <dialog>
         <form>
             <button value="cancel" id="close" formmethod="dialog">X</button>
             <h1>Book Information</h1>
 
-            <div>
+            <div class="input-pair">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title">
             </div>
 
-            <div>
+            <div class="input-pair">
                 <label for="author">Author</label>
                 <input type="text" name="author" id="author">
             </div>
 
-            <div>
+            <div class="input-pair">
                 <label for="pages">How many pages?</label>
                 <input type="number" name="pages" id="pages">
             </div>
 
-            <div>
+            <div class="input-pair">
                 <label for="read">I have read this book.</label>
                 <input type="checkbox" name="read" id="read">
             </div>
@@ -40,7 +44,11 @@
     </dialog>
 
     <div id="card-container">
-
+        <!-- <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div> -->
     </div>
 
     <script src="script.js"></script>

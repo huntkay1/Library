@@ -6,7 +6,6 @@ const closeBttn = document.getElementById("close");
 const statusBttn = document.getElementById("status");
 
 
-
 //Creates book object
 function Book(title, author, pages, read) {
     this.title = title;
@@ -17,6 +16,7 @@ function Book(title, author, pages, read) {
 
 //adds book object to myLibrary array and adds the card to UI
 function addBookToLibrary(ev) {
+    dialog.close();
     ev.preventDefault(); //stops the form from submitting - ev is the event
     const book = new Book(
         document.getElementById('title').value,
@@ -43,6 +43,10 @@ function makeCard() {
         var pages = document.createElement("p");
         var read = document.createElement("p");
         var removeBttn = document.createElement("button");
+        var bookInfo = document.createElement("div");
+        bookInfo.classList.add("book-info");
+        var buttons = document.createElement("div");
+        buttons.classList.add("buttons");
 
         //make the read status toggle
         var readStatus = document.createElement("button");
@@ -57,18 +61,19 @@ function makeCard() {
         readStatus.appendChild(span2);
 
         //add elements to card
-        card.appendChild(title);
-        card.appendChild(author);
-        card.appendChild(pages);
-        card.appendChild(read);
-        card.appendChild(removeBttn);
-        card.appendChild(readStatus);
+        bookInfo.appendChild(title);
+        bookInfo.appendChild(author);
+        bookInfo.appendChild(pages);
+        buttons.appendChild(removeBttn);
+        buttons.appendChild(readStatus);
+        card.appendChild(bookInfo);
+        card.appendChild(buttons);
         cardContainer.appendChild(card);
 
         //add card text contents
         title.innerHTML = obj.title;
         author.innerHTML = obj.author;
-        pages.innerHTML = obj.pages;
+        pages.innerHTML = obj.pages + " " + "pages";
         read.innerHTML = obj.read;
         removeBttn.innerHTML = "remove";
 
@@ -82,7 +87,7 @@ function makeCard() {
 //removes the card from UI and corresponding book object from myLibrary
 function removeCard(ev) {
     var bttn = ev.target;
-    var cardBody = bttn.parentElement;
+    var cardBody = bttn.parentElement.parentElement;
     var bookTitle = cardBody.querySelector("h2").innerHTML;
     
     myLibrary.splice(myLibrary.findIndex(book => book.title === bookTitle), 1);
@@ -92,12 +97,16 @@ function removeCard(ev) {
 
 //change read status UI, class name, and corresponding key value 
 function changeStatus(ev) {
+    //get the button's class name
     var bttn = ev.target.parentElement;
-    var cardBody = bttn.parentElement;
+    var classValue = bttn.classList.value;
+
+    //find the corresponding book's ID
+    var cardBody = bttn.parentElement.parentElement;
     var bookTitle = cardBody.querySelector("h2").innerHTML;
     var index = myLibrary.findIndex(book => book.title === bookTitle)
-    var classValue = bttn.classList.value;
     
+    //change the class name and update the book's read status 
     if (classValue === "true") {
         bttn.classList.replace("true", "false");
         myLibrary[index].read = false;
