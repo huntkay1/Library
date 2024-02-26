@@ -16,39 +16,38 @@
 
     <dialog>
         <form>
+
+            <div id="form-input">
+                <h1>Book Information</h1>
+
+                <div class="row">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" class="text-input">
+                </div>
+
+                <div class="row">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author" class="text-input">
+                </div>
+
+                <div class="row">
+                    <label for="author">How Many Pages?</label>
+                    <input type="text" name="pages" id="pages" class="text-input">
+                </div>
+
+                <div class="input-pair">
+                    <label for="read">I read the book: </label>
+                    <input type="checkbox" name="read" id="read">
+                </div>
+
+                <button type="submit" id="submit">Add</button>
+            </div>
+
             <button value="cancel" id="close" formmethod="dialog">X</button>
-            <h1>Book Information</h1>
-
-            <div class="input-pair">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title">
-            </div>
-
-            <div class="input-pair">
-                <label for="author">Author</label>
-                <input type="text" name="author" id="author">
-            </div>
-
-            <div class="input-pair">
-                <label for="pages">How many pages?</label>
-                <input type="number" name="pages" id="pages">
-            </div>
-
-            <div class="input-pair">
-                <label for="read">I have read this book.</label>
-                <input type="checkbox" name="read" id="read">
-            </div>
-
-            <button type="submit" id="submit">Add</button>
         </form>
     </dialog>
 
     <div id="card-container">
-        <!-- <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div> -->
     </div>
 
     <script src="script.js"></script>

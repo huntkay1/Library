@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-body, h1, h2, h3, h4, p, button {
+body, h1, h2, h3, h4, p, button, input {
     margin: 0;
     padding: 0;
 }
@@ -23,7 +23,7 @@ body, h1, h2, h3, h4, p, button {
     border-radius: 5px;
     height: 45px;
     font-size: 17px;
-    font-weight: 400;
+    font-weight: 500;
     padding: 10px 15px;
 }
 
@@ -115,5 +115,103 @@ button.false :last-child {
 
 dialog {
     height: 400px;
-    width: 600px;
+    width: 350px;
 }
+
+#close {
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    background-color: transparent;
+    margin: 12px;
+    align-self: flex-start;
+}
+
+form {
+    display: flex;
+}
+
+form h1 {
+    margin-top: 50px;
+    margin-bottom: 45px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+#form-input {
+    align-self: flex-end;
+    margin-left: 20px;
+}
+
+input {
+    margin-bottom: 35px;
+    font-size: 15px;
+    height: 20px;
+    border: 0;
+    border-bottom: 2px solid black;
+    padding-left: 2px;
+    padding-bottom: 2px;
+}
+
+input[type="text"] {
+    width: 250px;
+}
+
+.input-pair {
+    display: flex;
+}
+
+.input-pair input[type="checkbox"]{
+    margin-top: 1px;
+    margin-left: 10px;
+    border: 1px solid black;
+}
+
+#submit {
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 0;
+    height: 35px;
+    width: 75px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+input::placeholder {
+    font-size: 16px;
+    color: #555;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+input:focus {
+    outline: none;
+}
+
+.row {
+    position: relative;
+    display: flex; 
+    flex-direction: column;
+}
+
+.row label {
+    position: absolute;
+    pointer-events: none;
+    transform: translate(0, 2px) scale(1);
+    transform-origin: top left;
+    transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    color: #6f81a5;
+    font-size: 16px;
+    line-height: 1;
+    left: 2px;
+}
+
+.row:focus-within label {
+    transform: translate(0, -20px) scale(0.8);
+    color: #000;
+  }
+
+
