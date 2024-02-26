@@ -117,7 +117,7 @@ function changeStatus(ev) {
     }
 }
 
-//checks if input has a value. If so, it "hides" the label 
+//checks if input has a value. If so, it "hides" the placeholder label
 function checkInput(ev) {
     const input = ev.target;
     const label = input.previousElementSibling;
@@ -129,6 +129,16 @@ function checkInput(ev) {
     }
 }
 
+//removes hidden placeholder label styling
+function freshForm() {
+    textInput.forEach((element) => {
+        label = element.previousElementSibling;
+        label.classList.remove("input-present");
+    })
+}
+
+
+
 //when content is fully loaded, open form to add book
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('submit').addEventListener('click', addBookToLibrary);
@@ -137,9 +147,12 @@ document.addEventListener('DOMContentLoaded', () => {
 //open and close form modal
 addBookBttn.addEventListener("click", () => {
     dialog.showModal();
+    freshForm();
 })
 closeBttn.addEventListener("click", () => {
     dialog.close();
+    document.querySelector('form').reset(); //resets the form for the next entry
+    freshForm();
 })
 
 //checks if user has changed input value
