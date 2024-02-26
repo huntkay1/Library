@@ -27,6 +27,10 @@ body, h1, h2, h3, h4, p, button, input {
     padding: 10px 15px;
 }
 
+#add-book:hover {
+    background-color: black;
+    color: white;
+}
 #card-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -113,6 +117,11 @@ button.false :last-child {
   background: #000;
   color: #fff;
   border-radius: 5px;
+}
+
+.buttons :first-child:hover {
+    background: black;
+    color: #fff;
 }
 
 dialog {
