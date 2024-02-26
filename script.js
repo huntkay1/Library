@@ -4,6 +4,7 @@ const addBookBttn = document.getElementById("add-book");
 const dialog = document.querySelector("dialog");
 const closeBttn = document.getElementById("close");
 const statusBttn = document.getElementById("status");
+const textInput = [...document.getElementsByClassName("text-input")];
 
 
 //Creates book object
@@ -116,6 +117,17 @@ function changeStatus(ev) {
     }
 }
 
+//checks if input has a value. If so, it "hides" the label 
+function checkInput(ev) {
+    const input = ev.target;
+    const label = input.previousElementSibling;
+
+    if (ev.target.value !== "") {
+        label.classList.add("input-present");
+    } else {
+        label.classList.remove("input-present");
+    }
+}
 
 //when content is fully loaded, open form to add book
 document.addEventListener('DOMContentLoaded', () => {
@@ -129,6 +141,15 @@ addBookBttn.addEventListener("click", () => {
 closeBttn.addEventListener("click", () => {
     dialog.close();
 })
+
+//checks if user has changed input value
+textInput.forEach((element) => {
+    element.addEventListener('keyup', checkInput);
+})
+
+
+
+
 
 
 
