@@ -10,6 +10,8 @@ body, h1, h2, h3, h4, p, button, input {
     padding: 0;
 }
 
+
+/* HEADER */
 #header {
     display: flex;
     justify-content: space-between;
@@ -31,6 +33,9 @@ body, h1, h2, h3, h4, p, button, input {
     background-color: black;
     color: white;
 }
+
+
+/* CARDS */
 #card-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -53,6 +58,8 @@ body, h1, h2, h3, h4, p, button, input {
     height: 100%;
 }
 
+
+/* CARD CONTENTS */
 .card h2 {
     font-size: 35px;
     font-weight: 400;
@@ -82,6 +89,8 @@ body, h1, h2, h3, h4, p, button, input {
     align-items: center;
 }
 
+
+/* REMOVE BUTTON */
 .buttons :first-child {
     background-color: transparent;
     border: 2px solid black;
@@ -92,6 +101,7 @@ body, h1, h2, h3, h4, p, button, input {
     font-size: 13px;
 }
 
+/* READ STATUS */
 .buttons :last-child {
     display: flex;
     justify-content: space-evenly;
@@ -124,6 +134,8 @@ button.false :last-child {
     color: #fff;
 }
 
+
+/* POP UP BOX */
 dialog {
     height: 400px;
     width: 350px;
@@ -168,6 +180,8 @@ input[type="text"] {
     width: 250px;
 }
 
+
+/* READ STATUS CHECKBOX */
 .input-pair {
     display: flex;
 }
@@ -177,6 +191,8 @@ input[type="text"] {
     margin-left: 10px;
     border: 1px solid black;
 }
+
+
 
 #submit {
     background-color: transparent;
