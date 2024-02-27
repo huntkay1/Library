@@ -24,7 +24,7 @@ body, h1, h2, h3, h4, p, button, input {
     border: 2.5px solid black;
     border-radius: 5px;
     height: 45px;
-    font-size: 17px;
+    font-size: 1rem;
     font-weight: 500;
     padding: 10px 15px;
 }
@@ -40,7 +40,7 @@ body, h1, h2, h3, h4, p, button, input {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-auto-rows: 220px;
-    gap: 30px;
+    gap: 25px;
     padding: 40px;
     margin: 0px 100px;
     border: 3px solid black;
@@ -51,11 +51,10 @@ body, h1, h2, h3, h4, p, button, input {
 .card {
     border: 2px solid black;
     border-radius: 2px;
-    padding: 18px 25px;
+    padding: 10px 25px;
     display: grid;
     grid-template-rows: 3fr 1fr;
     max-width: 400px;
-    height: 100%;
 }
 
 
@@ -240,6 +239,23 @@ input:focus {
 
 label.input-present {
     color: transparent;
+}
+
+@media (max-width: 797px) {
+    #add-book {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 5px;
+        font-size: 14px;
+    }
+
+    #add-book span {
+        margin-bottom: 3px;
+        font-weight: 600;
+        font-size: 16px;
+    }
 }
 
 
