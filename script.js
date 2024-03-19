@@ -8,11 +8,13 @@ const textInput = [...document.getElementsByClassName("text-input")];
 
 
 //Creates book object
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
 //adds book object to myLibrary array and adds the card to UI
